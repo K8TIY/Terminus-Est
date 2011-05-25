@@ -1,0 +1,160 @@
+"__CLEAR_RECENTS__" = "Clear Recent Expressions";
+
+
+"__NAME__" = "Name";
+"__STATES__" = "States";
+"__FINALS__" = "Finals";
+"__EDGES__" = "Arcs";
+"__PATHS__" = "Paths";
+"__DET__" = "Deterministic";
+"__EFREE__" = "ɛ-free";
+"__EMPTY__" = "Empty";
+"__FUNCTIONAL__" = "Functional";
+"__UNAMBIGUOUS__" = "Unambiguous";
+"__STARFREE__" = "*-free";
+
+// Tabs
+"__MACHINES__" = "Machines";
+"__FUNCTIONS__" = "Functions";
+"__NUMARGS__" = "Args";
+"__REGEX__" = "Regex";
+
+// Preferences
+"__PREFS_WIN__" = "Preferences";
+"__DEFAULT_COLUMNS__" = "Default Columns";
+"__CUTOFF__" = "Cutoff";
+"__CUTOFF_EXPLANATION__" = "Number of states above which quadratic algorithms (functional, unambiguous) are not used.";
+"__SF_CUTOFF__" = "*-free Cutoff";
+"__SF_CUTOFF_EXPLANATION__" = "Number of states above which *-free algorithm (which is exponential in the worst case) are not used.";
+"__TRISTATE__" = "Tristate Composition";
+"__OPEN_UNTITLED__" = "Open untitled file at startup";
+
+// Strings Panel
+"__LIMIT__" = "Limit";
+
+// Define Function Sheet
+"__PARAMETERS__" = "Parameters";
+"__DEFINE_F_HELP__" = "Enter the function parameters, separated by commas.";
+
+// Menus
+"__ABOUT__" = "About __APPNAME__...";
+"__PREFS__" = "Preferences...";
+"__SERVICES__" = "Services";
+"__HIDE__" = "Hide __APPNAME__";
+"__HIDE_OTHERS__" = "Hide Others";
+"__SHOW_ALL__" = "Show All";
+"__QUIT__" = "Quit __APPNAME__";
+
+"__FILE__" = "File";
+"__NEW__" = "New";
+"__OPEN__" = "Open...";
+"__OPEN_RECENT__" = "Open Recent";
+"__CLEAR_MENU__" = "Clear Menu";
+"__CLOSE__" = "Close";
+"__SAVE__" = "Save";
+"__SAVE_AS__" = "Save As...";
+"__REVERT__" = "Revert";
+"__IMPORT_LEXC__" = "Import lexc...";
+"__EXPORT_ATT__" = "Export AT&T...";
+
+"__EDIT__" = "Edit";
+"__REDO__" = "Redo";
+"__CUT__" = "Cut";
+"__COPY__" = "Copy";
+"__PASTE__" = "Paste";
+"__DELETE__" = "Delete";
+"__SELECT_ALL__" = "Select All";
+
+"__MACHINE__" = "Machine";
+"__VIEW__" = "View";
+"__COMPILE__" = "Compile";
+"__DEFINE__" = "Define...";
+"__DEFINE_FUNCTION__" = "Define Function...";
+"__DUPLICATE__" = "Duplicate";
+"__UNIVERSAL__" = "Universal";
+"__ANY__" = "Any";
+"__EMPTY_SET__" = "Empty Set";
+"__EMPTY_STRING__" = "Empty String";
+"__IDENTITY__" = "Identity";
+
+//"__APPLICATION__" = "Application";
+"__APPLY_UP__" = "Apply Up";
+"__APPLY_DOWN__" = "Apply Down";
+"__APPLY_U_W__" = "Upper Words";
+"__APPLY_L_W__" = "Lower Words";
+"__APPLY_WORDS__" = "Words";
+"__APPLY_RAND_U__" = "Random Upper";
+"__APPLY_RAND_L__" = "Random Lower";
+"__APPLY_RAND_W__" = "Random Words";
+"__APPLY_MED__" = "Apply MED";
+
+"__UNARY__" = "Unary";
+"__MINIMIZE__" = "Minimize";
+"__PRUNE__" = "Prune";
+"__COMPACT__" = "Compact Σ";
+"__DETERMINIZE__" = "Determinize";
+"__REVERSE__" = "Reverse";
+"__INVERT__" = "Invert";
+"__UPPER__" = "Upper";
+"__LOWER__" = "Lower";
+"__KLEENE_STAR__" = "Kleene Star";
+"__KLEENE_PLUS__" = "Kleene Plus";
+"__OPTIONAL__" = "Optional";
+
+"__WINDOW__" = "Window";
+"__MINIMIZE__" = "Minimize";
+"__ZOOM__" = "Zoom";
+"__ALL_TO_FRONT__" = "Bring All to Front";
+"__SHOW_SYMBOLS__" = "Show Symbol Palette";
+"__HIDE_SYMBOLS__" = "Hide Symbol Palette";
+"__SHOW_STRINGS__" = "Show Strings";
+"__HIDE_STRINGS__" = "Hide Strings";
+"__NEXT_TAB__" = "Next Tab";
+"__PREV_TAB__" = "Previous Tab";
+
+"__HELP__" = "Help";
+"__HELP_ITEM__" = "__APPNAME__ Help";
+
+// Contextual Menus
+"__COPY_PROLOG__" = "Copy Prolog";
+
+// Palette
+"__SYMBOLS__" = "Symbols";
+"Σ" = "'Any' symbol";
+"ε" = "Empty string";
+"∅" = "Empty language";
+"∘" = "Composition";
+"×" = "Cross-product";
+"∪" = "Union";
+"∩" = "Intersection";
+"¬" = "Negation";
+"∥" = "Shuffle (asynchronous product)";
+"∀" = "Universal quantification";
+"∃" = "Existential quantification";
+"∈" = "Set membership";
+"≤" = "Less than or equal to";
+"≥" = "Greater than or equal to";
+"∧" = "Conjunction";
+"∨" = "Disjunction";
+"→" = "Implicaton";
+"↔" = "Biconditional";
+"₁" = "Upper projection";
+"₂" = "Lower projection";
+
+// Undo actions
+"__UNDO_DELETE__" = "Delete";
+"__UNDO_DELETE_F__" = "Delete Function";
+"__UNDO_ADD__" = "Add";
+"__UNDO_ADD_F__" = "Add Function";
+"__UNDO_COMPILE__" = "Compile";
+"__UNDO_MOVE__" = "Move";
+"__UNDO_COPY__" = "Copy";
+"__UNDO_DUP__" = "Duplicate";
+"__UNDO_RENAME__" = "Rename";
+
+// Error Messages
+"__NO_SPACE__" = "Whitespace detected.";
+"__NO_SPACE_EXPL__" = "Whitespace is not allowed in machine definitions.";
+
+// Standard
+"__OK__" = "OK";

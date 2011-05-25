@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+
+<array>
+<dict><key>char</key> <string>Σ</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.0502008, 0.831263}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>ε</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.0502008, 0.698758}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∅</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.0502008, 0.566253}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>₁</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.0502008, 0.433747}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>₂</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.0502008, 0.301242}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∘</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.831263}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>×</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.698758}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∪</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.566253}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∩</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.433747}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>¬</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.301242}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∥</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.2751, 0.168737}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∀</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.831263}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∃</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.698758}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∈</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.566253}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>≤</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.433747}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>≥</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.301242}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∧</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.168737}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>∨</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.5, 0.0362319}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>→</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.7249, 0.831263}, {0.2249, 0.132505}}</string>
+</dict>
+<dict><key>char</key> <string>↔</string>
+  <key>chart</key> <string>user</string>
+  <key>rect</key> <string>{{0.7249, 0.698758}, {0.2249, 0.132505}}</string>
+</dict>
+</array>
+</plist>

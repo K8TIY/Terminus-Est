@@ -1,0 +1,167 @@
+// Document types
+"Terminus Est document" = "Terminus Est 書類";
+"Regular expression list" = "Regular expression list";
+"lexc document" = "lexc 書類";
+"foma Prolog document" = "foma Prolog 書類";
+
+"__CLEAR_RECENTS__" = "最近使った正規表現を消去";
+
+"__NAME__" = "名";
+"__STATES__" = "状態";
+"__FINALS__" = "最終状態";
+"__EDGES__" = "弧";
+"__PATHS__" = "道";
+"__DET__" = "決定";
+"__EFREE__" = "無ɛ";
+"__EMPTY__" = "空";
+"__FUNCTIONAL__" = "関数形";
+"__UNAMBIGUOUS__" = "無曖昧";
+"__STARFREE__" = "無＊";
+
+// Tabs
+"__MACHINES__" = "マシン";
+"__FUNCTIONS__" = "関数";
+"__NUMARGS__" = "引数";
+"__REGEX__" = "正規表現";
+
+// Preferences
+"__PREFS_WIN__" = "環境設定";
+"__DEFAULT_COLUMNS__" = "デフォルトの表示項目";
+"__CUTOFF__" = "限";
+"__CUTOFF_EXPLANATION__" = "二次アルゴリズム（関数形、無曖昧）を使う状態の限。";
+"__SF_CUTOFF__" = "無＊の限";
+"__SF_CUTOFF_EXPLANATION__" = "無＊アルゴリズム（場合指数の最悪）を使う状態の限。";
+"__TRISTATE__" = "三状態合成"; // Composition = 合成
+"__OPEN_UNTITLED__" = "起動時に新しいファイルを作成する";
+
+// Strings panel
+"__LIMIT__" = "限度";
+
+// Define Function Sheet
+"__PARAMETERS__" = "パラメータ";
+"__DEFINE_F_HELP__" = "関数のパラメータをカンマで区切って入力します。";
+
+// Menus
+"__ABOUT__" = "__APPNAME__ について⋯";
+"__PREFS__" = "環境設定⋯";
+"__SERVICES__" = "サービス";
+"__HIDE__" = "__APPNAME__ を隠す";
+"__HIDE_OTHERS__" = "ほかを隠す";
+"__SHOW_ALL__" = "すべてを表示";
+"__QUIT__" = "__APPNAME__ を終了";
+
+"__FILE__" = "ファイル";
+"__NEW__" = "新規";
+"__OPEN__" = "開く⋯";
+"__OPEN_RECENT__" = "最近使った書類";
+"__CLEAR_MENU__" = "メニューをクリア";
+"__CLOSE__" = "閉じる";
+"__SAVE__" = "保存";
+"__SAVE_AS__" = "別名で保存⋯";
+"__REVERT__" = "復帰";
+"__IMPORT_LEXC__" = "lexcを読み込む⋯";
+"__EXPORT_ATT__" = "AT&Tを書き出す⋯";
+
+"__EDIT__" = "編集";
+"__REDO__" = "やり直し";
+"__CUT__" = "カット";
+"__COPY__" = "コピー";
+"__PASTE__" = "ペースト";
+"__DELETE__" = "削除";
+"__SELECT_ALL__" = "すべてを選択";
+
+"__MACHINE__" = "マシン";
+"__VIEW__" = "表示";
+"__COMPILE__" = "コンパイル";
+"__DEFINE__" = "定義⋯";
+"__DEFINE_FUNCTION__" = "関数定義⋯";
+"__DUPLICATE__" = "複製";
+"__UNIVERSAL__" = "普遍";
+"__ANY__" = "任意";
+"__EMPTY_SET__" = "空集合";
+"__EMPTY_STRING__" = "空の文字列";
+"__IDENTITY__" = "一致";
+
+//"__APPLICATION__" = "応用";
+"__APPLY_UP__" = "上向きに適用";
+"__APPLY_DOWN__" = "下向きに適用";
+"__APPLY_U_W__" = "上向きの単語";
+"__APPLY_L_W__" = "下向きの単語";
+"__APPLY_W__" = "単語";
+"__APPLY_RAND_U__" = "ランダムな上向き";
+"__APPLY_RAND_L__" = "ランダムな下向き";
+"__APPLY_RAND_W__" = "単語";
+"__APPLY_MED__" = "ＭＥＤ応用";
+
+"__UNARY__" = "単項演算";
+"__MINIMIZE__" = "最小化";
+"__PRUNE__" = "剪る";
+"__COMPACT__" = "Σ圧縮";
+"__DETERMINIZE__" = "決定化";
+"__REVERSE__" = "反転";
+"__INVERT__" = "インバート";
+"__UPPER__" = "上側";
+"__LOWER__" = "下側";
+"__KLEENE_STAR__" = "クリーネ＊";
+"__KLEENE_PLUS__" = "クリーネ＋";
+"__OPTIONAL__" = "任意";
+
+"__WINDOW__" = "ウインドウ";
+"__MINIMIZE__" = "しまう";
+"__ZOOM__" = "拡大／縮小";
+"__ALL_TO_FRONT__" = "すべてを手前に移動";
+"__SYMBOL_PALETTE__" = "記号パレット";
+"__SHOW_SYMBOLS__" = "記号パレットを表示";
+"__HIDE_SYMBOLS__" = "記号パレットを隠す";
+"__SHOW_STRINGS__" = "文字列を表示";
+"__HIDE_STRINGS__" = "文字列を隠す";
+"__NEXT_TAB__" = "次のタブ";
+"__PREV_TAB__" = "前のタブ";
+
+"__HELP__" = "ヘルプ";
+"__HELP_ITEM__" = "__APPNAME__ ヘルプ";
+
+// Contextual Menus
+"__COPY_PROLOG__" = "Prologをコピー";
+
+// Palette
+"__SYMBOLS__" = "記号";
+"Σ" = "「任意」の文字列";
+"ε" = "空の文字列";
+"∅" = "空集合";
+"∘" = "合成";
+"×" = "クロス積";
+"∪" = "結合";
+"∩" = "論理積";
+"¬" = "否定";
+"∥" = "シャッフル （調歩同期積）";
+"∀" = "全称記号";
+"∃" = "存在記号";
+"∈" = "集合に属すること";
+"≤" = "以下";
+"≥" = "以上";
+"∧" = "連言";
+"∨" = "選言";
+"→" = "条件法";
+"↔" = "双条件法";
+"₁" = "上側";
+"₂" = "下側";
+
+// Delete actions
+"__UNDO_DELETE__" = "削除";
+"__UNDO_DELETE_F__" = "関数を削除";
+"__UNDO_ADD__" = "追加";
+"__UNDO_ADD_F__" = "関数を追加";
+"__UNDO_COMPILE__" = "コンパイル";
+"__UNDO_UNARY__" = "単項演算";
+"__UNDO_MOVE__" = "移動";
+"__UNDO_COPY__" = "コピー";
+"__UNDO_DUP__" = "複製";
+"__UNDO_RENAME__" = "名称変更";
+
+// Error Messages
+"__NO_SPACE__" = "スペースが検出されました。";
+"__NO_SPACE_EXPL__" = "スペースはマシンの定義では許可されません。";
+
+// Standard
+"__OK__" = "OK";

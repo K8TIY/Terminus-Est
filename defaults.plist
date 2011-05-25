@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<true/>
+	<key>states</key>
+	<true/>
+	<key>finals</key>
+	<true/>
+	<key>edges</key>
+	<true/>
+	<key>paths</key>
+	<true/>
+	<key>deterministic</key>
+	<true/>
+	<key>efree</key>
+	<true/>
+	<key>empty</key>
+	<false/>
+	<key>functional</key>
+	<false/>
+	<key>unambiguous</key>
+	<false/>
+	<key>identity</key>
+	<false/>
+	<key>universal</key>
+	<false/>
+	<key>starfree</key>
+	<false/>
+	<key>cutoff</key>
+	<integer>1000</integer>
+	<key>sfcutoff</key>
+	<integer>100</integer>
+	<key>tristate</key>
+	<false/>
+	<key>untitled</key>
+	<true/>
+	<key>noWhitespaceAlert</key>
+	<false/>
+</dict>
+</plist>
