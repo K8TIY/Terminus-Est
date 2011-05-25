@@ -35,9 +35,7 @@ extern int g_compose_tristate;
   // Get the hot rect locations from the main image map data file
   NSString* path = [[NSBundle mainBundle] pathForResource:@"Symbols" ofType:@"plist"];
   NSArray* dat = [[NSArray alloc] initWithContentsOfFile:path];
-  NSDictionary* entry;
-  NSEnumerator* enumerator = [dat objectEnumerator];
-  while ((entry = [enumerator nextObject]))
+  for (NSDictionary* entry in dat)
   {
     NSString* key = [entry objectForKey:@"char"];
     SubRect r = NSRectFromString([entry objectForKey:@"rect"]);
