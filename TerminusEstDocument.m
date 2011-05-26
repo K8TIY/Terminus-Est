@@ -853,7 +853,7 @@ Bail:
       NSString* newName = [[tv textStorage] string];
       NSRange white = [newName rangeOfCharacterFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       if (white.location == NSNotFound || white.length == 0)
-        [self _renameMachineAtIndex:sel toName:newName withActionName:NSLocalizedString(@"__UNDO_RENAME__", @"Rename Machine") defining:YES];
+        [self _renameMachineAtIndex:sel toName:newName withActionName:NSLocalizedString(@"__UNDO_DEFINE__", @"Rename Machine") defining:YES];
       else if (NO == [[NSUserDefaults standardUserDefaults] boolForKey:@"noWhitespaceAlert"])
       {
         NSAlert* lert = [NSAlert alertWithMessageText:NSLocalizedString(@"__NO_SPACE__",@"")
@@ -1051,16 +1051,18 @@ Bail:
 {
   TEMachine* m = [_machines objectAtIndex:i];
   NSString* oldName = [m name];
-  if (def != [m isDefined] || ![oldName isEqual:name])
+  if (def != [m isDefined] || ![oldName isEqualToString:name])
   {
     oldName = [oldName copy];
     [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:oldName withActionName:action defining:!def]; 
     [[self undoManager] setActionName:action];
     [oldName release];
+    // If undefining, undefine before setting the name
+    if (!def) [m setDefined:def];
+    [m setName:name];
+    if (def) [m setDefined:def];
+    [_table reloadData];
   }
-  [m setName:name];
-  [m setDefined:def];
-  [_table reloadData];
 }
 
 -(NSMutableAttributedString*)_check

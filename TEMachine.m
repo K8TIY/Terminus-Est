@@ -51,11 +51,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 -(NSString*)name { return _name; }
 -(void)setDefined:(BOOL)flag
 {
-  if (flag) add_defined(_fsm, [_name UTF8String]);
+  char* cname = (char*)[_name UTF8String];
+  if (flag)
+  {
+    // Don't add_defined if this net is the same as the one already defined
+    // for the name.
+    struct fsm* already = find_defined(cname);
+    if (already != _fsm) add_defined(_fsm, cname);
+  }
   else
   {
     struct fsm* cpy = fsm_copy(_fsm);
-    remove_defined([_name UTF8String]);
+    remove_defined(cname);
     _fsm = cpy;
   }
 }
