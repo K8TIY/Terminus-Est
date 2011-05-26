@@ -20,9 +20,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 @interface TEMachine : NSObject <NSCopying>
 {
-  struct fsm*       _fsm;
-  NSMutableString*  _name;
+  struct fsm*      _fsm;
+  NSMutableString* _name;
+  BOOL             _def;
 }
++(TEMachine*)machineWithRegex:(NSString*)regex name:(NSString*)name
+             machines:(NSArray*)machines;
 -(id)initWithFSM:(struct fsm*)fsm name:(NSString*)name defined:(BOOL)def;
 -(void)setName:(NSString*)name;
 -(struct fsm*)fsm;

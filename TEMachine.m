@@ -17,27 +17,48 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #import "TEMachine.h"
 
 @implementation TEMachine
++(TEMachine*)machineWithRegex:(NSString*)regex name:(NSString*)name
+             machines:(NSArray*)machines
+{
+  TEMachine* m = nil;
+  remove_defined(NULL);
+  for (TEMachine* machine in machines) 
+  {
+    struct fsm* fsm = [machine fsm];
+    add_defined(fsm_copy(fsm), (char*)[[machine name] UTF8String]);
+  }
+  const char* txt = [regex UTF8String];
+  struct fsm* fsm = fsm_parse_regex((char*)txt);
+  if (fsm)
+  {
+    fsm = fsm_topsort(fsm);
+    m = [[[TEMachine alloc] initWithFSM:fsm name:name defined:NO] autorelease];
+    fsm_destroy(fsm);
+  }
+  remove_defined(NULL);
+  return m;
+}
+
 -(id)initWithFSM:(struct fsm*)fsm name:(NSString*)name defined:(BOOL)def
 {
   self = [super init];
   _fsm = fsm_copy(fsm);
   _name = [[NSMutableString alloc] init];
   [self setName:name];
-  if (def) add_defined(_fsm, [_name UTF8String]);
+  [self setDefined:def];
   return self;
 }
 
 -(void)dealloc
 {
-  if ([self isDefined]) remove_defined([_name UTF8String]);
-  else fsm_destroy(_fsm);
+  fsm_destroy(_fsm);
   [_name release];
   [super dealloc];
 }
 
 -(id)copyWithZone:(NSZone*)zone
 {
-  return [[TEMachine allocWithZone:zone] initWithFSM:_fsm name:_name defined:NO];
+  return [[TEMachine allocWithZone:zone] initWithFSM:_fsm name:_name defined:_def];
 }
 
 -(void)setName:(NSString*)name
@@ -49,27 +70,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -(struct fsm*)fsm { return _fsm; }
 -(NSString*)name { return _name; }
--(void)setDefined:(BOOL)flag
-{
-  char* cname = (char*)[_name UTF8String];
-  if (flag)
-  {
-    // Don't add_defined if this net is the same as the one already defined
-    // for the name.
-    struct fsm* already = find_defined(cname);
-    if (already != _fsm) add_defined(_fsm, cname);
-  }
-  else
-  {
-    struct fsm* cpy = fsm_copy(_fsm);
-    remove_defined(cname);
-    _fsm = cpy;
-  }
-}
-
--(BOOL)isDefined
-{
-  struct fsm* fsm = find_defined([_name UTF8String]);
-  return (fsm && fsm==_fsm);
-}
+-(void)setDefined:(BOOL)flag { _def = flag; }
+-(BOOL)isDefined { return _def; }
 @end

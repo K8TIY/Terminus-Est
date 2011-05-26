@@ -49,6 +49,7 @@ typedef NSUInteger NSPropertyListWriteOptions;
 -(void)_replaceMachineAtIndex:(NSUInteger)i withMachine:(TEMachine*)m withActionName:(NSString*)action;
 -(void)_deleteMachineAtIndex:(NSUInteger)i withActionName:(NSString*)action;
 -(void)_renameMachineAtIndex:(NSUInteger)i toName:(NSString*)name withActionName:(NSString*)action defining:(BOOL)def;
+-(void)_undefineDuplicatesOfMachine:(TEMachine*)m;
 -(void)_readLexc:(NSString*)file;
 -(void)_sheetDidEnd:(NSWindow*)sheet returnCode:(NSInteger)code contextInfo:(void*)contextInfo;
 -(void)_exportPanelDidEnd:(NSSavePanel*)sheet returnCode:(NSInteger)returnCode contextInfo:(void*)ctx;
@@ -974,19 +975,14 @@ Bail:
 -(void)_compile:(NSString*)regex defined:(NSString*)name asAction:(BOOL)act
 {
   [self handleStderr:nil length:0];
-  const char* interfacetext = [regex UTF8String];
-  struct fsm* fsm = fsm_parse_regex((char*)interfacetext);
+  TEMachine* m = [TEMachine machineWithRegex:regex name:name machines:_machines];
   if ([_stdout length]) [self handleStderr:nil length:1];
-  if (fsm)
+  if (m)
   {
-    fsm = fsm_topsort(fsm);
-    //print_net(fsm, NULL);
-    TEMachine* m = [[TEMachine alloc] initWithFSM:fsm name:regex defined:(name)? YES:NO];
-    fsm_destroy(fsm);
     if (name) [m setName:name];
+    else [m setName:regex];
     NSUInteger i = [_machines count];
     [self _insertMachine:m atIndex:i withActionName:(act)? NSLocalizedString(@"__UNDO_COMPILE__", @"Compile Machine"):nil defining:(name)? YES:NO];
-    [m release];
     if (act)
     {
       [_docWindow makeFirstResponder:_edit];
@@ -1057,11 +1053,25 @@ Bail:
     [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:oldName withActionName:action defining:!def]; 
     [[self undoManager] setActionName:action];
     [oldName release];
-    // If undefining, undefine before setting the name
-    if (!def) [m setDefined:def];
-    [m setName:name];
-    if (def) [m setDefined:def];
+    if (name) [m setName:name];
+    [m setDefined:def];
+    if (def) [self _undefineDuplicatesOfMachine:m];
     [_table reloadData];
+  }
+}
+
+-(void)_undefineDuplicatesOfMachine:(TEMachine*)m
+{
+  NSUInteger i = 0;
+  for (TEMachine* m2 in _machines)
+  {
+    if (m2 != m && [m2 isDefined] && [[m name] isEqualToString:[m2 name]])
+    {
+      [m2 setDefined:NO];
+      [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:nil withActionName:nil defining:YES];
+      break;
+    }
+    i++;
   }
 }
 
