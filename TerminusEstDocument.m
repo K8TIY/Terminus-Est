@@ -221,9 +221,9 @@ static NSDictionary* gColumnIDToViewTag = nil;
   NSFileWrapper* wrapper = nil;
   int err = 0;
   if (oError) *oError = nil;
-  if ([type isEqual:@"Terminus Est Document"])
+  if ([type isEqualToString:@"Terminus Est Document"])
   {
-    wrapper = [[[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil] autorelease];
+    wrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
     int fd;
     NSString* tempfile = [self createAndOpenTempFile:&fd];
     close(fd);
@@ -238,7 +238,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
     }
     gzclose(f);
     NSData* data = [[NSData alloc] initWithContentsOfFile:tempfile];
-    NSString* key = [wrapper addRegularFileWithContents:data preferredFilename:@"stack.gz"];
+    (void)[wrapper addRegularFileWithContents:data preferredFilename:@"stack.gz"];
     [data release];
     if ([defs count])
     {
@@ -248,14 +248,14 @@ static NSDictionary* gColumnIDToViewTag = nil;
       {
         NSString* errStr = nil;
         data = [NSPropertyListSerialization dataFromPropertyList:defs format:NSPropertyListXMLFormat_v1_0 errorDescription:&errStr];
-        if (errStr)
+        if (errStr && oError)
         {
           NSDictionary *errUI = [NSDictionary dictionaryWithObjectsAndKeys:errStr, NSLocalizedDescriptionKey, nil];
           *oError = [NSError errorWithDomain:@"TerminusEstErrorDomain" code:-1 userInfo:errUI];
           [errStr release];
         }
       }
-      key = [wrapper addRegularFileWithContents:data preferredFilename:@"defs.plist"];
+      (void)[wrapper addRegularFileWithContents:data preferredFilename:@"defs.plist"];
     }
     [defs release];
     if (_recents) [_recents removeAllObjects];
@@ -273,14 +273,14 @@ static NSDictionary* gColumnIDToViewTag = nil;
       {
         NSString* errStr = nil;
         data = [NSPropertyListSerialization dataFromPropertyList:_recents format:NSPropertyListXMLFormat_v1_0 errorDescription:&errStr];
-        if (errStr)
+        if (errStr && oError)
         {
           NSDictionary *errUI = [NSDictionary dictionaryWithObjectsAndKeys:errStr, NSLocalizedDescriptionKey, nil];
           *oError = [NSError errorWithDomain:@"TerminusEstErrorDomain" code:-1 userInfo:errUI];
           [errStr release];
         }
       }
-      key = [wrapper addRegularFileWithContents:data preferredFilename:@"recents.plist"];
+      (void)[wrapper addRegularFileWithContents:data preferredFilename:@"recents.plist"];
     }
     [_recents release];
     _recents = nil;
@@ -304,18 +304,18 @@ static NSDictionary* gColumnIDToViewTag = nil;
       {
         NSString* errStr = nil;
         data = [NSPropertyListSerialization dataFromPropertyList:fdefs format:NSPropertyListXMLFormat_v1_0 errorDescription:&errStr];
-        if (errStr)
+        if (errStr && oError)
         {
           NSDictionary *errUI = [NSDictionary dictionaryWithObjectsAndKeys:errStr, NSLocalizedDescriptionKey, nil];
           *oError = [NSError errorWithDomain:@"TerminusEstErrorDomain" code:-1 userInfo:errUI];
           [errStr release];
         }
       }
-      key = [wrapper addRegularFileWithContents:data preferredFilename:@"fdefs.plist"];
+      (void)[wrapper addRegularFileWithContents:data preferredFilename:@"fdefs.plist"];
     }
     [fdefs release];
   }
-  else if ([type isEqual:@"foma Prolog Document"])
+  else if ([type isEqualToString:@"foma Prolog Document"])
   {
     NSMutableString* contents = [[NSMutableString alloc] init];
     for (TEMachine* m in _machines)
@@ -335,7 +335,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
   {
     *oError = [[[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:err userInfo:nil] autorelease];
   }
-  return wrapper;
+  return [wrapper autorelease];
 }
 
 -(NSString*)createAndOpenTempFile:(int*)oFile
@@ -365,6 +365,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
   BOOL ok = [self readFromFileWrapper:wrapper ofType:type error:oError];
   [wrapper release];
   if (!ok) [_machines setArray:saved];
+  [saved release];
   [_table reloadData];
   [self updateChangeCount:NSChangeCleared];
   [self tableViewSelectionDidChange:nil]; // Well, the machine may have changed anyway.
@@ -379,7 +380,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
   TEMachine* m;
   NSString* name = nil;
   if (!_machines) _machines = [[NSMutableArray alloc] init];
-  if ([type isEqual:@"Terminus Est document"])
+  if ([type isEqualToString:@"Terminus Est Document"])
   {
     NSString* path = [[self fileName] stringByAppendingPathComponent:@"stack.gz"];
     //NSLog(@"Reading %@", path);
@@ -431,7 +432,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       [fdefs release];
     }
   }
-  else if ([type isEqual:@"foma Prolog document"])
+  else if ([type isEqualToString:@"foma Prolog Document"])
   {
     // FIXME: when foma supports fsm_read_prolog on a FILE*, this needs rewritten.
     /*FILE* prologFile = fopen([[self fileName] UTF8String], "r");
@@ -455,7 +456,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
     fsm_destroy(net);
     if (0 == [_machines count]) err = -1;
   }
-  else if ([type isEqual:@"Regular Expression List"])
+  else if ([type isEqualToString:@"Regular Expression List"])
   {
     NSString* content = [[NSString alloc] initWithContentsOfFile:[self fileName] encoding:NSUTF8StringEncoding error:oError];
     if (!content) return NO;
@@ -474,7 +475,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       [scanner2 scanUpToCharactersFromSet:
                [NSCharacterSet whitespaceAndNewlineCharacterSet] 
                intoString:&cmd];
-      if ([cmd isEqual:@"def"])
+      if ([cmd isEqualToString:@"def"])
       {
         [scanner2 scanUpToCharactersFromSet:
                  [NSCharacterSet whitespaceAndNewlineCharacterSet] 
@@ -486,7 +487,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       cmd = name = regex = nil;
     }
   }
-  else if ([type isEqual:@"lexc document"])
+  else if ([type isEqualToString:@"lexc Document"])
   {
     [self _readLexc:[self fileName]];
   }
@@ -561,6 +562,7 @@ Bail:
       m = [m copy];
       [m setName:[NSString stringWithFormat:@"%@ copy", [m name]]];
       [self _insertMachine:m atIndex:i+1 withActionName:NSLocalizedString(@"__UNDO_DUP__", @"Duplicate") defining:NO];
+      [m release];
     }
   }
 }
@@ -704,6 +706,7 @@ Bail:
         }
         fsm_topsort(fsm);
         [self _replaceMachineAtIndex:i withMachine:cpy withActionName:NSLocalizedString(actionName, @"Unary Operation")];
+        [cpy release];
       }
     }
     [_table reloadData];
@@ -764,7 +767,7 @@ Bail:
 {
   #pragma unused (tv)
   id obj = nil;
-  NSString* ident = [col identifier];
+  id ident = [col identifier];
   TEMachine* m = [_machines objectAtIndex:row];
   struct fsm* fsm = [m fsm];
   if ([ident isEqual:@"defined"] && [m isDefined]) obj = [NSImage imageNamed:@"TEDefinitionTemplate"];
@@ -1279,6 +1282,7 @@ Bail:
   return [menu autorelease];
 }
 @end
+
 static int TE_print_dot(struct fsm *net, char *filename) {
     struct fsm_state *stateptr;
     FILE *dotfile;
@@ -1289,7 +1293,6 @@ static int TE_print_dot(struct fsm *net, char *filename) {
     fsm_count(net);
     
     finals = xxmalloc(sizeof(short)*net->statecount);
-    stateptr = net->states;
     
     for (i=0; (stateptr+i)->state_no != -1; i++) {
         if ((stateptr+i)->final_state == 1) {
