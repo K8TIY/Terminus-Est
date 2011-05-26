@@ -151,6 +151,7 @@
 "__UNDO_COPY__" = "Copy";
 "__UNDO_DUP__" = "Duplicate";
 "__UNDO_RENAME__" = "Rename";
+"__UNDO_DEFINE__" = "Define";
 
 // Error Messages
 "__NO_SPACE__" = "Whitespace detected.";

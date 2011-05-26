@@ -158,6 +158,7 @@
 "__UNDO_COPY__" = "コピー";
 "__UNDO_DUP__" = "複製";
 "__UNDO_RENAME__" = "名称変更";
+"__UNDO_DEFINE__" = "定義";
 
 // Error Messages
 "__NO_SPACE__" = "スペースが検出されました。";
