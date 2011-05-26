@@ -16,7 +16,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>TerminusDoc.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>Terminus Est document</string>
+			<string>Terminus Est Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
@@ -33,7 +33,7 @@
 				<string>regex</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Regular expression list</string>
+			<string>Regular Expression List</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSTypeIsPackage</key>
@@ -49,7 +49,7 @@
 				<string>lexc</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>lexc document</string>
+			<string>lexc Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSTypeIsPackage</key>
@@ -69,7 +69,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>TerminusDoc.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>foma Prolog document</string>
+			<string>foma Prolog Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
