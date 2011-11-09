@@ -37,8 +37,8 @@
 "__DEFINE_F_HELP__" = "Enter the function parameters, separated by commas.";
 
 // Menus
-"__ABOUT__" = "About __APPNAME__...";
-"__PREFS__" = "Preferences...";
+"__ABOUT__" = "About __APPNAME__…";
+"__PREFS__" = "Preferences…";
 "__SERVICES__" = "Services";
 "__HIDE__" = "Hide __APPNAME__";
 "__HIDE_OTHERS__" = "Hide Others";
@@ -47,15 +47,15 @@
 
 "__FILE__" = "File";
 "__NEW__" = "New";
-"__OPEN__" = "Open...";
+"__OPEN__" = "Open…";
 "__OPEN_RECENT__" = "Open Recent";
 "__CLEAR_MENU__" = "Clear Menu";
 "__CLOSE__" = "Close";
 "__SAVE__" = "Save";
-"__SAVE_AS__" = "Save As...";
+"__SAVE_AS__" = "Save As…";
 "__REVERT__" = "Revert";
-"__IMPORT_LEXC__" = "Import lexc...";
-"__EXPORT_ATT__" = "Export AT&T...";
+"__IMPORT_LEXC__" = "Import lexc…";
+"__EXPORT_ATT__" = "Export AT&T…";
 
 "__EDIT__" = "Edit";
 "__REDO__" = "Redo";
@@ -68,8 +68,8 @@
 "__MACHINE__" = "Machine";
 "__VIEW__" = "View";
 "__COMPILE__" = "Compile";
-"__DEFINE__" = "Define...";
-"__DEFINE_FUNCTION__" = "Define Function...";
+"__DEFINE__" = "Define…";
+"__DEFINE_FUNCTION__" = "Define Function…";
 "__DUPLICATE__" = "Duplicate";
 "__UNIVERSAL__" = "Universal";
 "__ANY__" = "Any";
@@ -102,7 +102,7 @@
 "__OPTIONAL__" = "Optional";
 
 "__WINDOW__" = "Window";
-"__MINIMIZE__" = "Minimize";
+"__W_MINIMIZE__" = "Minimize";
 "__ZOOM__" = "Zoom";
 "__ALL_TO_FRONT__" = "Bring All to Front";
 "__SHOW_SYMBOLS__" = "Show Symbol Palette";

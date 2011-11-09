@@ -1473,7 +1473,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{213, 113}</string>
 				<object class="NSView" key="NSWindowView" id="230578870">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1492,6 +1492,7 @@
 											<int key="NSvFlags">274</int>
 											<string key="NSFrameSize">{327, 285}</string>
 											<reference key="NSSuperview" ref="288499226"/>
+											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="_NSCornerView" key="NSCornerView">
 												<nil key="NSNextResponder"/>
@@ -1543,6 +1544,8 @@
 									</object>
 									<string key="NSFrame">{{1, 1}, {327, 285}}</string>
 									<reference key="NSSuperview" ref="247490810"/>
+									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView" ref="608148077"/>
 									<reference key="NSDocView" ref="608148077"/>
 									<reference key="NSBGColor" ref="74301092"/>
 									<int key="NScvFlags">4</int>
@@ -1552,6 +1555,7 @@
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{328, 1}, {11, 285}}</string>
 									<reference key="NSSuperview" ref="247490810"/>
+									<reference key="NSWindow"/>
 									<int key="NSsFlags">256</int>
 									<reference key="NSTarget" ref="247490810"/>
 									<string key="NSAction">_doScroller:</string>
@@ -1562,6 +1566,7 @@
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{-100, -100}, {124, 11}}</string>
 									<reference key="NSSuperview" ref="247490810"/>
+									<reference key="NSWindow"/>
 									<int key="NSsFlags">257</int>
 									<reference key="NSTarget" ref="247490810"/>
 									<string key="NSAction">_doScroller:</string>
@@ -1570,6 +1575,8 @@
 							</object>
 							<string key="NSFrame">{{10, 16}, {340, 287}}</string>
 							<reference key="NSSuperview" ref="230578870"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="288499226"/>
 							<int key="NSsFlags">18</int>
 							<reference key="NSVScroller" ref="918244151"/>
 							<reference key="NSHScroller" ref="590748110"/>
@@ -1581,6 +1588,7 @@
 							<int key="NSvFlags">266</int>
 							<string key="NSFrame">{{10, 341}, {340, 19}}</string>
 							<reference key="NSSuperview" ref="230578870"/>
+							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="650760950">
 								<int key="NSCellFlags">-1804468671</int>
@@ -1598,6 +1606,7 @@
 							<int key="NSvFlags">267</int>
 							<string key="NSFrame">{{166, 310}, {187, 22}}</string>
 							<reference key="NSSuperview" ref="230578870"/>
+							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="261186412">
 								<int key="NSCellFlags">-2076049856</int>
@@ -1731,6 +1740,7 @@
 							<int key="NSvFlags">270</int>
 							<string key="NSFrame">{{10, 311}, {151, 22}}</string>
 							<reference key="NSSuperview" ref="230578870"/>
+							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<int key="NSNumRows">1</int>
 							<int key="NSNumCols">1</int>
@@ -1776,6 +1786,8 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{359, 369}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{213, 129}</string>
@@ -3377,6 +3389,7 @@
 						<int key="objectID">997</int>
 						<reference key="object" ref="530172229"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Defaults Controller</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1001</int>
@@ -4068,7 +4081,6 @@
 							<string>dupAction:</string>
 							<string>exportATTAction:</string>
 							<string>importLexcAction:</string>
-							<string>importRegexAction:</string>
 							<string>insertRecent:</string>
 							<string>machineOp:</string>
 							<string>selectNextTab:</string>
@@ -4079,7 +4091,6 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

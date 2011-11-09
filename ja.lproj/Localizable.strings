@@ -107,7 +107,7 @@
 "__OPTIONAL__" = "任意";
 
 "__WINDOW__" = "ウインドウ";
-"__MINIMIZE__" = "しまう";
+"__W_MINIMIZE__" = "しまう";
 "__ZOOM__" = "拡大／縮小";
 "__ALL_TO_FRONT__" = "すべてを手前に移動";
 "__SYMBOL_PALETTE__" = "記号パレット";

@@ -54,7 +54,6 @@
 		8D15AC310486D014006FF6A4 /* TerminusEstDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* TerminusEstDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		A6681EC108AC707900B1C197 /* StringsPanel.h in Resources */ = {isa = PBXBuildFile; fileRef = A6681EBF08AC707900B1C197 /* StringsPanel.h */; };
 		A6681EC208AC707900B1C197 /* StringsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6681EC008AC707900B1C197 /* StringsPanel.m */; };
 		A6921ECB0F9CFB960067C404 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6921ECA0F9CFB960067C404 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -325,7 +324,6 @@
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				320145CC10A249CA00FB04BA /* MainMenu.xib in Resources */,
-				A6681EC108AC707900B1C197 /* StringsPanel.h in Resources */,
 				A6921ECB0F9CFB960067C404 /* Localizable.strings in Resources */,
 				327F871D10B21D9400DE0D58 /* Symbols.plist in Resources */,
 				3202547510B30F7300B11DCD /* Symbols.pdf in Resources */,
@@ -418,14 +416,14 @@
 				);
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TerminusEst_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -460,7 +458,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "Terminus Est";
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -475,12 +473,13 @@
 				);
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TerminusEst_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -514,7 +513,7 @@
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Terminus Est";
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

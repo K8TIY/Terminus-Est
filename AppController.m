@@ -3,7 +3,7 @@ Terminus Est: a Mac GUI for the foma finite-state toolkit and library.
 Copyright © 2009-2010 Brian "Moses" Hall
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2 as
+it under the terms of the GNU General Public License version 2 or later as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,

@@ -4,7 +4,7 @@ Copyright © 2009-2011 Brian "Moses" Hall
 Portions © 2008-2010 Mans Hulden
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2 as
+it under the terms of the GNU General Public License version 2 or later as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -22,9 +22,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #import "StringsPanel.h"
 #import "foma.h"
 
-extern size_t io_gz_file_to_mem(char *filename);
-extern struct fsm *io_net_read(char **net_name);
-extern void io_free();
+extern struct io_buf_handle *io_init();
+extern size_t io_gz_file_to_mem(struct io_buf_handle *iobh, char *filename);
+extern struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
+extern void io_free(struct io_buf_handle *iobh);
 // FIXME: print_dot is static so we reproduce it here.
 static int TE_print_dot(struct fsm *net, char *filename);
 static char *TE_sigptr(struct sigma *sigma, int number);
@@ -36,7 +37,8 @@ extern struct definedf  *defines_f;
 #if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_5
 typedef NSUInteger NSPropertyListWriteOptions;
 @interface NSPropertyListSerialization (SnowLeopardAdditions)
-+(NSData*)dataWithPropertyList:(id)plist format:(NSPropertyListFormat)format options:(NSPropertyListWriteOptions)opt error:(NSError**)error;
++(NSData*)dataWithPropertyList:(id)plist format:(NSPropertyListFormat)format
+          options:(NSPropertyListWriteOptions)opt error:(NSError**)error;
 @end
 #endif
 
@@ -386,9 +388,10 @@ static NSDictionary* gColumnIDToViewTag = nil;
     NSString* path = [[self fileName] stringByAppendingPathComponent:@"stack.gz"];
     //NSLog(@"Reading %@", path);
     char* net_name = NULL;
-    if (io_gz_file_to_mem((char*)[path UTF8String]) > 0)
+    struct io_buf_handle* bh = io_init();
+    if (io_gz_file_to_mem(bh, (char*)[path UTF8String]) > 0)
     {
-      while (NULL != (net = io_net_read(&net_name)))
+      while (NULL != (net = io_net_read(bh, &net_name)))
       {
         if (NULL == net_name || NULL == net)
         {
@@ -405,7 +408,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
         net_name = NULL;
       }
     }
-    io_free();
+    io_free(bh);
     path = [[self fileName] stringByAppendingPathComponent:@"defs.plist"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path])
     {

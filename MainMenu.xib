@@ -662,7 +662,7 @@
 								</object>
 								<object class="NSMenuItem" id="180207187">
 									<reference key="NSMenu" ref="310234764"/>
-									<string key="NSTitle">__MINIMIZE__</string>
+									<string key="NSTitle">__W_MINIMIZE__</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>

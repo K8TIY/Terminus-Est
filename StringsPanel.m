@@ -3,7 +3,7 @@ Terminus Est: a Mac GUI for the foma finite-state toolkit and library.
 Copyright © 2009-2011 Brian "Moses" Hall
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2 as
+it under the terms of the GNU General Public License version 2 or later as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -111,15 +111,15 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
       char* result = NULL;
       switch (op)
       {
-        case teApplyUpTag:    result = apply_up(ah, (i==0)?input:NULL);  break;
-        case teApplyDownTag:  result = apply_down(ah, (i==0)?input:NULL);  break;
+        case teApplyUpTag:          result = apply_up(ah, (i==0)?input:NULL);  break;
+        case teApplyDownTag:        result = apply_down(ah, (i==0)?input:NULL);  break;
         case teApplyUpperWordsTag:  result = apply_upper_words(ah);  break;
         case teApplyLowerWordsTag:  result = apply_lower_words(ah);  break;
-        case teApplyWordsTag:  result = apply_words(ah);  break;
-        case teApplyRandomUpperTag:  result = apply_random_upper(ah);  break;
-        case teApplyRandomLowerTag:  result = apply_random_lower(ah);  break;
-        case teApplyRandomWordsTag:  result = apply_random_words(ah);  break;
-        case teApplyMedTag: (void)apply_med(fsm, input);  break;
+        case teApplyWordsTag:       result = apply_words(ah);  break;
+        case teApplyRandomUpperTag: result = apply_random_upper(ah);  break;
+        case teApplyRandomLowerTag: result = apply_random_lower(ah);  break;
+        case teApplyRandomWordsTag: result = apply_random_words(ah);  break;
+        case teApplyMedTag:         (void)apply_med(fsm, input);  break;
       }
       if (!result)
       {
