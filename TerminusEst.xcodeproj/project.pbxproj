@@ -37,6 +37,7 @@
 		3202548B10B3107D00B11DCD /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3202548A10B3107D00B11DCD /* AppController.m */; };
 		320ABF8F10BC8B6000A82D55 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 320ABF8E10BC8B6000A82D55 /* defaults.plist */; };
 		320D08D4120CB3D600C58F40 /* FunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320D08D3120CB3D600C58F40 /* FunctionController.m */; };
+		320D6E8F146B0C420029A56C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 320D6E8E146B0C420029A56C /* InfoPlist.strings */; };
 		3277B8231268F2E20090C030 /* iface.c in Sources */ = {isa = PBXBuildFile; fileRef = 320ABFF610BC993500A82D55 /* iface.c */; };
 		3277B8301268F32B0090C030 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 3277B82F1268F32B0090C030 /* stack.c */; };
 		3279A1E81215BCAE007180F1 /* TEFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3279A1E71215BCAE007180F1 /* TEFunction.m */; };
@@ -103,6 +104,8 @@
 		320ABFF610BC993500A82D55 /* iface.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = iface.c; sourceTree = "<group>"; };
 		320D08D2120CB3D600C58F40 /* FunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionController.h; sourceTree = "<group>"; };
 		320D08D3120CB3D600C58F40 /* FunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionController.m; sourceTree = "<group>"; };
+		320D6E81146B0C250029A56C /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		320D6E90146B0C550029A56C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3277B82F1268F32B0090C030 /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
 		3277B83D1268F3890090C030 /* foma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = foma.c; sourceTree = "<group>"; };
 		3279A1E61215BCAE007180F1 /* TEFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEFunction.h; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 				32CC75CD120B633200FD6A14 /* Terminus.icns */,
 				32CC75D1120B692C00FD6A14 /* TerminusDoc.icns */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
+				320D6E8E146B0C420029A56C /* InfoPlist.strings */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				A6921ECA0F9CFB960067C404 /* Localizable.strings */,
 			);
@@ -301,8 +305,6 @@
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
 				French,
 				German,
 				en,
@@ -332,6 +334,7 @@
 				32CC75D2120B692C00FD6A14 /* TerminusDoc.icns in Resources */,
 				32EDA8BB12147D5F007E4217 /* TerminusEstDocument.xib in Resources */,
 				32EDA9DD1214B60F007E4217 /* TEDefinitionTemplate.pdf in Resources */,
+				320D6E8F146B0C420029A56C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +395,15 @@
 				32A1DE31138DA2180061E84B /* ja */,
 			);
 			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		320D6E8E146B0C420029A56C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				320D6E81146B0C250029A56C /* en */,
+				320D6E90146B0C550029A56C /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		A6921ECA0F9CFB960067C404 /* Localizable.strings */ = {

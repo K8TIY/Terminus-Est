@@ -348,12 +348,9 @@ static NSDictionary* gColumnIDToViewTag = nil;
   char* tempFileNameCString = (char*)malloc(strlen(tempFileTemplateCString) + 1);
   strcpy(tempFileNameCString, tempFileTemplateCString);
   *oFile = mkstemp(tempFileNameCString);
-  if (*oFile == -1)
-  {
-    return nil;
-  }
-  // This is the file name if you need to access the file by name, otherwise you can remove
-  // this line.
+  if (*oFile == -1) return nil;
+  // This is the file name if you need to access the file by name, otherwise
+  // you can remove this line.
   NSString* tempFileName = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:tempFileNameCString length:strlen(tempFileNameCString)];
   free(tempFileNameCString);
   return tempFileName;
@@ -383,7 +380,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
   TEMachine* m;
   NSString* name = nil;
   if (!_machines) _machines = [[NSMutableArray alloc] init];
-  if ([type isEqualToString:@"Terminus Est Document"])
+  if ([type isEqualToString:@"__TE_DOC__"])
   {
     NSString* path = [[self fileName] stringByAppendingPathComponent:@"stack.gz"];
     //NSLog(@"Reading %@", path);
@@ -436,7 +433,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       [fdefs release];
     }
   }
-  else if ([type isEqualToString:@"foma Prolog Document"])
+  else if ([type isEqualToString:@"__P_DOC__"])
   {
     // FIXME: when foma supports fsm_read_prolog on a FILE*, this needs rewritten.
     /*FILE* prologFile = fopen([[self fileName] UTF8String], "r");
@@ -460,7 +457,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
     fsm_destroy(net);
     if (0 == [_machines count]) err = -1;
   }
-  else if ([type isEqualToString:@"Regular Expression List"])
+  else if ([type isEqualToString:@"__RE_DOC__"])
   {
     NSString* content = [[NSString alloc] initWithContentsOfFile:[self fileName] encoding:NSUTF8StringEncoding error:oError];
     if (!content) return NO;
@@ -491,7 +488,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       cmd = name = regex = nil;
     }
   }
-  else if ([type isEqualToString:@"lexc Document"])
+  else if ([type isEqualToString:@"__L_DOC__"])
   {
     [self _readLexc:[self fileName]];
   }
