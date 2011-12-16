@@ -116,6 +116,7 @@
 		32A1DE31138DA2180061E84B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
 		32A3F447138D81A800D38883 /* PDFImageMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFImageMap.m; sourceTree = "<group>"; };
 		32A3F448138D81A800D38883 /* PDFImageMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFImageMap.h; sourceTree = "<group>"; };
+		32A4B8E6149C005C00307013 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		32B1562C10B4873900DD0BB6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32CC75CD120B633200FD6A14 /* Terminus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Terminus.icns; sourceTree = "<group>"; };
 		32CC75D1120B692C00FD6A14 /* TerminusDoc.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TerminusDoc.icns; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 			children = (
 				325CF3FD10BB0AE000B15206 /* TerminusEst */,
 				328B7657107B9D2300F69ECC /* foma */,
+				32A4B8E6149C005C00307013 /* README.markdown */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
 			);
