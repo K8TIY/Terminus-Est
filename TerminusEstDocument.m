@@ -764,6 +764,8 @@ Bail:
   return [_machines count];
 }
 
+// FIXME: when this makes it into the foma public API, remove it.
+extern int fsm_isstarfree(struct fsm *net);
 -(id)tableView:(NSTableView*)tv objectValueForTableColumn:(NSTableColumn*)col row:(NSInteger)row
 {
   #pragma unused (tv)
