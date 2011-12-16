@@ -100,7 +100,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
   if (_machine && [self isVisible])
   {
     struct fsm* fsm = [_machine fsm];
-    struct apply_handle* ah = apply_init(fsm);
+    struct apply_handle* ah = NULL;
+    struct apply_med_handle* amh = NULL;
+    if (op == teApplyMedTag) amh = apply_med_init(fsm);
+    else ah = apply_init(fsm);
     char* input = (char*)[[_stringsInput stringValue] UTF8String];
     //NSLog(@"_recalc: op %d input %s", op, input);
     unsigned limit = (op == teApplyMedTag)? 1:[_stringsLimit intValue];
@@ -111,25 +114,29 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
       char* result = NULL;
       switch (op)
       {
-        case teApplyUpTag:          result = apply_up(ah, (i==0)?input:NULL);  break;
-        case teApplyDownTag:        result = apply_down(ah, (i==0)?input:NULL);  break;
+        case teApplyUpTag:          result = apply_up(ah, (i==0)? input:NULL);  break;
+        case teApplyDownTag:        result = apply_down(ah, (i==0)? input:NULL);  break;
         case teApplyUpperWordsTag:  result = apply_upper_words(ah);  break;
         case teApplyLowerWordsTag:  result = apply_lower_words(ah);  break;
         case teApplyWordsTag:       result = apply_words(ah);  break;
         case teApplyRandomUpperTag: result = apply_random_upper(ah);  break;
         case teApplyRandomLowerTag: result = apply_random_lower(ah);  break;
         case teApplyRandomWordsTag: result = apply_random_words(ah);  break;
-        case teApplyMedTag:         (void)apply_med(fsm, input);  break;
+        case teApplyMedTag:         result = apply_med(amh, input);  break;
       }
       if (!result)
       {
         if (i > 0) break;
         result = "<no result>";
       }
-      NSString* nsstr = [NSString stringWithCString:result encoding:NSUTF8StringEncoding];
-      [_strings addObject:nsstr];
+      if (result)
+      {
+        NSString* nsstr = [NSString stringWithUTF8String:result];
+        if (nsstr) [_strings addObject:nsstr];
+      }
     }
-    apply_clear(ah);
+    if (ah) apply_clear(ah);
+    if (amh) apply_med_clear(amh);
   }
   [_stringsTable reloadData];
 }
