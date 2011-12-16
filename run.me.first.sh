@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir foma
-svn co http://foma.svn.sourceforge.net/svnroot/foma/trunk/foma
+svn co http://foma.googlecode.com/svn/trunk/foma/ foma
 cd foma
 make
 rm *.o
