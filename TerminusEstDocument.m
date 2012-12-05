@@ -656,8 +656,15 @@ Bail:
   NSInteger i;
   for (i = [_table numberOfRows]; i > 0; i--)
     if ([_table isRowSelected:i-1]) [self _deleteMachineAtIndex:i-1 withActionName:NSLocalizedString(@"__UNDO_DELETE__", @"Delete Machine")];
+    if ([_table isRowSelected:i-1])
+      [self _deleteMachineAtIndex:i-1 withActionName:NSLocalizedString(@"__UNDO_DELETE__", @"Delete Machine")];
   if ([_table selectedRow] == -1)
     [_table selectRow:[_table numberOfRows]-1 byExtendingSelection:NO];
+  {
+    NSIndexSet* rows = [[NSIndexSet alloc] initWithIndex:[_table numberOfRows]-1];
+    [_table selectRowIndexes:rows byExtendingSelection:NO];
+    [rows release];
+  }
 }
 
 -(IBAction)machineOp:(id)sender
@@ -923,8 +930,12 @@ extern int fsm_isstarfree(struct fsm *net);
       BOOL isCopy = (srcMask & NSDragOperationMove) ? NO:YES;
       dropRow = [self _moveRows:array to:dropRow copying:isCopy];
       [table deselectAll:self];
+      NSMutableIndexSet* rows = [[NSMutableIndexSet alloc] init];
       for (id blah in array)
         [table selectRow:(dropRow++) byExtendingSelection:YES];
+        [rows addIndex:dropRow++];
+      [table selectRowIndexes:rows byExtendingSelection:YES];
+      [rows release];
       accepted = YES;
     }
 	}
@@ -1021,6 +1032,7 @@ extern int fsm_isstarfree(struct fsm *net);
   {
     [_table reloadData];
     [_table selectRow:i byExtendingSelection:NO];
+    [_table selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:NO];
     [_table scrollRowToVisible:i];
     [[[self undoManager] prepareWithInvocationTarget:self] _deleteMachineAtIndex:i withActionName:action]; 
     [[self undoManager] setActionName:action];
