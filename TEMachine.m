@@ -17,6 +17,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #import "TEMachine.h"
 
 @implementation TEMachine
+@synthesize defined = _def;
 +(TEMachine*)machineWithRegex:(NSString*)regex name:(NSString*)name
              machines:(NSArray*)machines
 {
@@ -70,6 +71,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -(struct fsm*)fsm { return _fsm; }
 -(NSString*)name { return _name; }
--(void)setDefined:(BOOL)flag { _def = flag; }
--(BOOL)isDefined { return _def; }
+//-(void)setDefined:(BOOL)flag { _def = flag; }
+//-(BOOL)isDefined { return _def; }
 @end

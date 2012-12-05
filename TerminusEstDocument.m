@@ -239,6 +239,7 @@ static NSDictionary* gColumnIDToViewTag = nil;
       TEMachine* m = [_machines objectAtIndex:i];
       (void)foma_net_print([m fsm], f);
       if ([m isDefined]) [defs addObject:[NSNumber numberWithInteger:i]];
+      if (m.defined) [defs addObject:[NSNumber numberWithInteger:i]];
     }
     gzclose(f);
     NSData* data = [[NSData alloc] initWithContentsOfFile:tempfile];
@@ -777,6 +778,7 @@ extern int fsm_isstarfree(struct fsm *net);
   TEMachine* m = [_machines objectAtIndex:row];
   struct fsm* fsm = [m fsm];
   if ([ident isEqual:@"defined"] && [m isDefined]) obj = [NSImage imageNamed:@"TEDefinitionTemplate"];
+  if ([ident isEqual:@"defined"] && m.defined) obj = [NSImage imageNamed:@"TEDefinitionTemplate"];
   else if ([ident isEqual:@"name"])
   {
     obj = [m name];
@@ -1029,9 +1031,11 @@ extern int fsm_isstarfree(struct fsm *net);
 {
   TEMachine* orig = [_machines objectAtIndex:i];
   if ([orig isDefined])
+  if (orig.defined)
   {
     [m setName:[orig name]];
     [m setDefined:YES];
+    m.defined = YES;
   }
   TEMachine* cpy = [orig copy];
   [_machines replaceObjectAtIndex:i withObject:m];
@@ -1046,6 +1050,7 @@ extern int fsm_isstarfree(struct fsm *net);
   TEMachine* m = [_machines objectAtIndex:i];
   TEMachine* cpy = [m copy];
   [[[self undoManager] prepareWithInvocationTarget:self] _insertMachine:cpy atIndex:i withActionName:action defining:[m isDefined]]; 
+  [[[self undoManager] prepareWithInvocationTarget:self] _insertMachine:cpy atIndex:i withActionName:action defining:m.defined]; 
   [[self undoManager] setActionName:action];
   [cpy release];
   [_machines removeObjectAtIndex:i];
@@ -1057,6 +1062,7 @@ extern int fsm_isstarfree(struct fsm *net);
   TEMachine* m = [_machines objectAtIndex:i];
   NSString* oldName = [m name];
   if (def != [m isDefined] || ![oldName isEqualToString:name])
+  if (def != m.defined || ![oldName isEqualToString:name])
   {
     oldName = [oldName copy];
     [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:oldName withActionName:action defining:!def]; 
@@ -1075,8 +1081,10 @@ extern int fsm_isstarfree(struct fsm *net);
   for (TEMachine* m2 in _machines)
   {
     if (m2 != m && [m2 isDefined] && [[m name] isEqualToString:[m2 name]])
+    if (m2 != m && m2.defined && [[m name] isEqualToString:[m2 name]])
     {
       [m2 setDefined:NO];
+      m2.defined = NO;
       [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:nil withActionName:nil defining:YES];
       break;
     }

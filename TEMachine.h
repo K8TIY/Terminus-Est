@@ -30,6 +30,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 -(void)setName:(NSString*)name;
 -(struct fsm*)fsm;
 -(NSString*)name;
--(void)setDefined:(BOOL)flag;
--(BOOL)isDefined;
+//-(void)setDefined:(BOOL)flag;
+//-(BOOL)isDefined;
+@property(assign,getter=isDefined) BOOL defined;
 @end
