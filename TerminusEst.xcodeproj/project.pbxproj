@@ -210,8 +210,7 @@
 				32A3F447138D81A800D38883 /* PDFImageMap.m */,
 				A6681EBF08AC707900B1C197 /* StringsPanel.h */,
 				A6681EC008AC707900B1C197 /* StringsPanel.m */,
-				320145B510A2491F00FB04BA /* Onizuka.h */,
-				320145B410A2491F00FB04BA /* Onizuka.m */,
+				32A4B8F1149C018900307013 /* Onizuka */,
 				2A37F4B0FDCFA73011CA2CEA /* main.m */,
 				A6FD1ADE0FA9694900F6DAF2 /* Resources */,
 				32DBCF750370BD2300C91783 /* TerminusEst_Prefix.pch */,
@@ -256,6 +255,15 @@
 				3201442410A1FACE00FB04BA /* utf8.c */,
 			);
 			path = foma;
+			sourceTree = "<group>";
+		};
+		32A4B8F1149C018900307013 /* Onizuka */ = {
+			isa = PBXGroup;
+			children = (
+				320145B510A2491F00FB04BA /* Onizuka.h */,
+				320145B410A2491F00FB04BA /* Onizuka.m */,
+			);
+			name = Onizuka;
 			sourceTree = "<group>";
 		};
 		A6FD1ADE0FA9694900F6DAF2 /* Resources */ = {
@@ -305,6 +313,7 @@
 			isa = PBXProject;
 			buildConfigurationList = A652A8C208CCD8A300DE14DC /* Build configuration list for PBXProject "TerminusEst" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				French,
@@ -436,7 +445,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TerminusEst_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -466,7 +475,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../gc-7.0/.libs\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "-lz";
 				PREBINDING = NO;
@@ -492,7 +500,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TerminusEst_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -521,7 +529,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../gc-7.0/.libs\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lz";
