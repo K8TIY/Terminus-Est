@@ -453,6 +453,8 @@ static NSDictionary* gColumnIDToViewTag = nil;
     fclose(prologFile);*/
     net = fsm_read_prolog((char*)[[self fileName] UTF8String]);
     m = [[TEMachine alloc] initWithFSM:net name:[NSString stringWithCString:net->name] defined:NO];
+    NSString* mname = [NSString stringWithCString:net->name encoding:NSUTF8StringEncoding];
+    m = [[TEMachine alloc] initWithFSM:net name:mname defined:NO];
     [_machines addObject:m];
     [m release];
     fsm_destroy(net);
@@ -952,6 +954,8 @@ extern int fsm_isstarfree(struct fsm *net);
   NSString* err = nil;
   //NSLog(@"handleError:'%@' %@ %@ %@", err, _errorDrawer, _errorDrawerIcon, _errorDrawerText);
   if (msg && len) err = [NSString stringWithCString:msg length:len];
+  if (msg && len)
+    err = [[[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding] autorelease];
   else if (len && !err && [_stdout length]) err = [self _retrieveStdout];
   else [_errorDrawer close];
   if (err)
@@ -971,8 +975,10 @@ extern int fsm_isstarfree(struct fsm *net);
 -(NSString*)_retrieveStdout
 {
   NSString* s = [NSString stringWithCString:[_stdout bytes] length:[_stdout length]];
+  NSString* s = [[NSString alloc] initWithBytes:[_stdout bytes] length:[_stdout length] encoding:NSUTF8StringEncoding];
   [_stdout setLength:0];
   return s;
+  return [s autorelease];
 }
 
 -(void)_compile:(NSString*)regex defined:(NSString*)name asAction:(BOOL)act
