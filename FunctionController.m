@@ -123,7 +123,7 @@ static int remove_defined_function(const char *string, int numargs);
   [newRegex release];
   [fname release];
   [_ftable reloadData];
-  [_ftable selectRow:[_ftable numberOfRows]-1 byExtendingSelection:NO];
+  [_ftable selectRowIndexes:[NSIndexSet indexSetWithIndex:[_ftable numberOfRows]-1] byExtendingSelection:NO];
   [_ftable scrollRowToVisible:i];
   if (act)
   {
@@ -137,7 +137,7 @@ static int remove_defined_function(const char *string, int numargs);
 {
   add_defined_function((char*)[[f name] UTF8String], (char*)[[f regex] UTF8String], [f numargs]);
   [_ftable reloadData];
-  [_ftable selectRow:[_ftable numberOfRows]-1 byExtendingSelection:NO];
+  [_ftable selectRowIndexes:[NSIndexSet indexSetWithIndex:[_ftable numberOfRows]-1] byExtendingSelection:NO];
   [_ftable scrollRowToVisible:idx];
   [[[_doc undoManager] prepareWithInvocationTarget:self] _deleteFunctionAtIndex:idx withActionName:action];
   [[_doc undoManager] setActionName:action];
@@ -172,7 +172,7 @@ static int remove_defined_function(const char *string, int numargs);
     }
   }
   if ([_ftable selectedRow] == -1)
-    [_ftable selectRow:[_ftable numberOfRows]-1 byExtendingSelection:NO];
+    [_ftable selectRowIndexes:[NSIndexSet indexSetWithIndex:[_ftable numberOfRows]-1] byExtendingSelection:NO];
 }
 
 -(void)_deleteFunctionAtIndex:(NSUInteger)i withActionName:(NSString*)action
