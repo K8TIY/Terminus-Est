@@ -30,7 +30,6 @@ extern void io_free(struct io_buf_handle *iobh);
 static int TE_print_dot(struct fsm *net, char *filename);
 static char *TE_sigptr(struct sigma *sigma, int number);
 
-NSString* const TEMachineListRows = @"TEMachineListRows";
 static NSString* const TEMachineListRows = @"TEMachineListRows";
 extern int foma_net_print(struct fsm *net, gzFile *outfile);
 extern struct definedf  *defines_f;
@@ -238,7 +237,6 @@ static NSDictionary* gColumnIDToViewTag = nil;
     {
       TEMachine* m = [_machines objectAtIndex:i];
       (void)foma_net_print([m fsm], f);
-      if ([m isDefined]) [defs addObject:[NSNumber numberWithInteger:i]];
       if (m.defined) [defs addObject:[NSNumber numberWithInteger:i]];
     }
     gzclose(f);
@@ -453,7 +451,6 @@ static NSDictionary* gColumnIDToViewTag = nil;
     }
     fclose(prologFile);*/
     net = fsm_read_prolog((char*)[[self fileName] UTF8String]);
-    m = [[TEMachine alloc] initWithFSM:net name:[NSString stringWithCString:net->name] defined:NO];
     NSString* mname = [NSString stringWithCString:net->name encoding:NSUTF8StringEncoding];
     m = [[TEMachine alloc] initWithFSM:net name:mname defined:NO];
     [_machines addObject:m];
@@ -655,11 +652,9 @@ Bail:
   #pragma unused (sender)
   NSInteger i;
   for (i = [_table numberOfRows]; i > 0; i--)
-    if ([_table isRowSelected:i-1]) [self _deleteMachineAtIndex:i-1 withActionName:NSLocalizedString(@"__UNDO_DELETE__", @"Delete Machine")];
     if ([_table isRowSelected:i-1])
       [self _deleteMachineAtIndex:i-1 withActionName:NSLocalizedString(@"__UNDO_DELETE__", @"Delete Machine")];
   if ([_table selectedRow] == -1)
-    [_table selectRow:[_table numberOfRows]-1 byExtendingSelection:NO];
   {
     NSIndexSet* rows = [[NSIndexSet alloc] initWithIndex:[_table numberOfRows]-1];
     [_table selectRowIndexes:rows byExtendingSelection:NO];
@@ -784,7 +779,6 @@ extern int fsm_isstarfree(struct fsm *net);
   id ident = [col identifier];
   TEMachine* m = [_machines objectAtIndex:row];
   struct fsm* fsm = [m fsm];
-  if ([ident isEqual:@"defined"] && [m isDefined]) obj = [NSImage imageNamed:@"TEDefinitionTemplate"];
   if ([ident isEqual:@"defined"] && m.defined) obj = [NSImage imageNamed:@"TEDefinitionTemplate"];
   else if ([ident isEqual:@"name"])
   {
@@ -932,7 +926,6 @@ extern int fsm_isstarfree(struct fsm *net);
       [table deselectAll:self];
       NSMutableIndexSet* rows = [[NSMutableIndexSet alloc] init];
       for (id blah in array)
-        [table selectRow:(dropRow++) byExtendingSelection:YES];
         [rows addIndex:dropRow++];
       [table selectRowIndexes:rows byExtendingSelection:YES];
       [rows release];
@@ -966,7 +959,6 @@ extern int fsm_isstarfree(struct fsm *net);
 {
   NSString* err = nil;
   //NSLog(@"handleError:'%@' %@ %@ %@", err, _errorDrawer, _errorDrawerIcon, _errorDrawerText);
-  if (msg && len) err = [NSString stringWithCString:msg length:len];
   if (msg && len)
     err = [[[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding] autorelease];
   else if (len && !err && [_stdout length]) err = [self _retrieveStdout];
@@ -987,10 +979,8 @@ extern int fsm_isstarfree(struct fsm *net);
 
 -(NSString*)_retrieveStdout
 {
-  NSString* s = [NSString stringWithCString:[_stdout bytes] length:[_stdout length]];
   NSString* s = [[NSString alloc] initWithBytes:[_stdout bytes] length:[_stdout length] encoding:NSUTF8StringEncoding];
   [_stdout setLength:0];
-  return s;
   return [s autorelease];
 }
 
@@ -1004,7 +994,9 @@ extern int fsm_isstarfree(struct fsm *net);
     if (name) [m setName:name];
     else [m setName:regex];
     NSUInteger i = [_machines count];
-    [self _insertMachine:m atIndex:i withActionName:(act)? NSLocalizedString(@"__UNDO_COMPILE__", @"Compile Machine"):nil defining:(name)? YES:NO];
+    NSString* action = nil;
+    if (act) action = [[Onizuka sharedOnizuka] bestLocalizedString:@"__UNDO_COMPILE__"];
+    [self _insertMachine:m atIndex:i withActionName:action defining:(name)? YES:NO];
     if (act)
     {
       [_docWindow makeFirstResponder:_edit];
@@ -1031,7 +1023,6 @@ extern int fsm_isstarfree(struct fsm *net);
   if (action)
   {
     [_table reloadData];
-    [_table selectRow:i byExtendingSelection:NO];
     [_table selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:NO];
     [_table scrollRowToVisible:i];
     [[[self undoManager] prepareWithInvocationTarget:self] _deleteMachineAtIndex:i withActionName:action]; 
@@ -1042,11 +1033,9 @@ extern int fsm_isstarfree(struct fsm *net);
 -(void)_replaceMachineAtIndex:(NSUInteger)i withMachine:(TEMachine*)m withActionName:(NSString*)action
 {
   TEMachine* orig = [_machines objectAtIndex:i];
-  if ([orig isDefined])
   if (orig.defined)
   {
     [m setName:[orig name]];
-    [m setDefined:YES];
     m.defined = YES;
   }
   TEMachine* cpy = [orig copy];
@@ -1061,7 +1050,6 @@ extern int fsm_isstarfree(struct fsm *net);
 {
   TEMachine* m = [_machines objectAtIndex:i];
   TEMachine* cpy = [m copy];
-  [[[self undoManager] prepareWithInvocationTarget:self] _insertMachine:cpy atIndex:i withActionName:action defining:[m isDefined]]; 
   [[[self undoManager] prepareWithInvocationTarget:self] _insertMachine:cpy atIndex:i withActionName:action defining:m.defined]; 
   [[self undoManager] setActionName:action];
   [cpy release];
@@ -1073,7 +1061,6 @@ extern int fsm_isstarfree(struct fsm *net);
 {
   TEMachine* m = [_machines objectAtIndex:i];
   NSString* oldName = [m name];
-  if (def != [m isDefined] || ![oldName isEqualToString:name])
   if (def != m.defined || ![oldName isEqualToString:name])
   {
     oldName = [oldName copy];
@@ -1092,10 +1079,8 @@ extern int fsm_isstarfree(struct fsm *net);
   NSUInteger i = 0;
   for (TEMachine* m2 in _machines)
   {
-    if (m2 != m && [m2 isDefined] && [[m name] isEqualToString:[m2 name]])
     if (m2 != m && m2.defined && [[m name] isEqualToString:[m2 name]])
     {
-      [m2 setDefined:NO];
       m2.defined = NO;
       [[[self undoManager] prepareWithInvocationTarget:self] _renameMachineAtIndex:i toName:nil withActionName:nil defining:YES];
       break;
