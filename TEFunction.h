@@ -26,5 +26,5 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 -(id)initWithFunction:(struct definedf*)f;
 @property(copy) NSString* name;
 @property(copy) NSString* regex;
-@property unsigned numargs;
+@property(assign) unsigned numargs;
 @end
