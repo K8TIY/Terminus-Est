@@ -31,6 +31,7 @@ static int TE_print_dot(struct fsm *net, char *filename);
 static char *TE_sigptr(struct sigma *sigma, int number);
 
 NSString* const TEMachineListRows = @"TEMachineListRows";
+static NSString* const TEMachineListRows = @"TEMachineListRows";
 extern int foma_net_print(struct fsm *net, gzFile *outfile);
 extern struct definedf  *defines_f;
 
